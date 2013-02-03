@@ -36,10 +36,11 @@ $chain = { :in => "INPUT", :out => "OUTPUT", :pre => "PREROUTING", :post => "POS
 $target = { "allow" => "ACCEPT", "reject" => "REJECT", "deny" => "DROP" }
 
 def apply_rule(type=nil)
+  firewall_command = is_ipv6_type ? "ip6tables" : "iptables"
   if @new_resource.position
-    firewall_command = "iptables -I #{@new_resource.position} "
+    firewall_command << " -I #{@new_resource.position} "
   else
-    firewall_command = "iptables -A "
+    firewall_command << " -A "
   end
   
   firewall_rule = ""

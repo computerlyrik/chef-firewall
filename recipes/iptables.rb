@@ -24,8 +24,17 @@ Chef::Platform.set(
 )
 
 Chef::Platform.set(
+  :resource => :firewall_rule_6,
+  :provider => Chef::Provider::FirewallRuleIptables
+)
+
+Chef::Platform.set(
   :resource => :firewall,
   :provider => Chef::Provider::FirewallIptables
 )
 
+Chef::Platform.set(
+  :resource => :firewall_6,
+  :provider => Chef::Provider::FirewallIptables
+)
 
